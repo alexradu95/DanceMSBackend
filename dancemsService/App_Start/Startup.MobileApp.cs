@@ -18,13 +18,9 @@ namespace DanceMS
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            //For more information on Web API tracing, see http://go.microsoft.com/fwlink/?LinkId=620686 
-            config.EnableSystemDiagnosticsTracing();
-
             new MobileAppConfiguration()
-                .UseDefaultConfiguration()
+                .AddTablesWithEntityFramework()
                 .ApplyTo(config);
-
             // Use Entity Framework Code First to create database tables based on your DbContext
             Database.SetInitializer(new dancemsInitializer());
 
