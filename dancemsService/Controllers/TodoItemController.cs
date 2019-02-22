@@ -14,7 +14,7 @@ namespace DanceMS.Controllers
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            dancemsContext context = new dancemsContext();
+            MobileServiceContext context = new MobileServiceContext();
             DomainManager = new EntityDomainManager<TodoItem>(context, Request);
         }
 

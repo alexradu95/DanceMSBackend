@@ -4,10 +4,11 @@ using System.Linq;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Tables;
 using DanceMS.DataObjects;
+using DanceMSService.DataObjects;
 
 namespace DanceMS.Models
 {
-    public class dancemsContext : DbContext
+    public class MobileServiceContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -18,11 +19,15 @@ namespace DanceMS.Models
 
         private const string connectionStringName = "Name=MS_TableConnectionString";
 
-        public dancemsContext() : base(connectionStringName)
+        public MobileServiceContext() : base(connectionStringName)
         {
-        } 
+            Database.Log = s => WriteLog(s);
+        }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public void WriteLog(string msg)
+        {
+            System.Diagnostics.Debug.WriteLine(msg);
+        }       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,6 +35,9 @@ namespace DanceMS.Models
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
         }
+
+        public DbSet<Example> Examples { get; set; }
+        public DbSet<TodoItem> TodoItems { get; set; }
     }
 
 }

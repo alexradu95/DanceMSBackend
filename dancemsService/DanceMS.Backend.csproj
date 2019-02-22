@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dancemsService</RootNamespace>
-    <AssemblyName>dancemsService</AssemblyName>
+    <RootNamespace>DanceMSService</RootNamespace>
+    <AssemblyName>DanceMSService</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -148,10 +148,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
+    <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DataObjects\EntityData.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
-    <Compile Include="Models\dancemsContext.cs" />
+    <Compile Include="Migrations\201902221249380_Initial.cs" />
+    <Compile Include="Migrations\201902221249380_Initial.Designer.cs">
+      <DependentUpon>201902221249380_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902221326509_ExampleEntityDataTable.cs" />
+    <Compile Include="Migrations\201902221326509_ExampleEntityDataTable.Designer.cs">
+      <DependentUpon>201902221326509_ExampleEntityDataTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,6 +180,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\dancems - Web Deploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902221249380_Initial.resx">
+      <DependentUpon>201902221249380_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902221326509_ExampleEntityDataTable.resx">
+      <DependentUpon>201902221326509_ExampleEntityDataTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
